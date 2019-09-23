@@ -1,0 +1,172 @@
+﻿@model ZORI_KIDS_KG.Models.Parinte
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<link rel="stylesheet" href="~/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+
+<section class="content-header">
+    <h1>
+        Inregistrare parinte
+    </h1>
+</section>
+<section class="content container-fluid">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Adauga date personale parinte</h3>
+        </div>
+        <form class="form-horizontal" method="post" asp-action="CreateParinte">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="box-body">
+
+                <div class="form-group">
+                    <label asp-for="Email" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Adresa email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input asp-for="Password" type="text" class="form-control" placeholder="Parola">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Cnp" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-drivers-license-o"></i></span>
+                        <input asp-for="Cnp" type="text" class="form-control" placeholder="CNP">
+                        <span asp-validation-for="Cnp" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Nume" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                        <input asp-for="Nume" type="text" class="form-control" placeholder="Nume">
+                        <span asp-validation-for="Nume" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Prenume" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-user-plus"></i></span>
+                        <input asp-for="Prenume" type="text" class="form-control" placeholder="Prenume">
+                        <span asp-validation-for="Prenume" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Varsta" class="col-sm-3 control-label"></label>
+                    <div class="input-group date col-xs-6">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input asp-for="Varsta" type="text" class="form-control pull-right" placeholder="Introduceti data nasterii" id="datepicker">
+                        <span asp-validation-for="Varsta" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Sex" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-venus-mars"></i></span>
+                        <select asp-for="Sex" class="form-control">
+                            <option value="">Alege raspuns</option>
+                            <option value="Masculin">Masculin</option>
+                            <option value="Feminin">Feminin</option>
+                        </select>
+                        <span asp-validation-for="Sex" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Telefon" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <div class="input-group-addon">
+                            <i class="fa fa-phone-square"></i>
+                        </div>
+                        <input asp-for="Telefon" type="text" placeholder="Introduceti nr telefon in formatul 07XXXXXXXX" class="form-control">
+                        <span asp-validation-for="Telefon" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Localitate" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                        <input asp-for="Localitate" type="text" class="form-control" placeholder="Localitate">
+                        <span asp-validation-for="Localitate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Judet" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-map-o"></i></span>
+                        <input asp-for="Judet" type="text" class="form-control" placeholder="Judet">
+                        <span asp-validation-for="Judet" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Adresa" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                        <input asp-for="Adresa" type="text" class="form-control" placeholder="Adresa completa">
+                        <span asp-validation-for="Adresa" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="RolesId" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                        <select asp-for="RolesId" class="form-control">
+                            <option value="">Alege raspuns</option>
+                            <option value="7">User</option>                            
+                        </select>
+                        <span asp-validation-for="RolesId" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box-footer">
+                <button type="button" onclick="Redirect();" class="btn-lg btn-default">Renunta</button>
+                <button type="submit" class="btn-lg btn-info pull-right">Adauga</button>
+            </div>
+
+        </form>
+    </div>
+
+</section>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/dist/jquery.mask.min.js"></script>
+
+    <script>
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
+        function Redirect() {
+            window.location = "/Parinte/Index";
+        }
+
+    </script>
+}

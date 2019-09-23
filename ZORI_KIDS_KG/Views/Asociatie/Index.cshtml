@@ -1,0 +1,122 @@
+﻿@model IEnumerable<ZORI_KIDS_KG.Models.Asociatie>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Asociatii
+        <small>Date asociatii</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Dashboard" asp-action="Index"><i class="fa fa-dashboard"></i> Home</a></li>        
+        <li class="active">Asociatii</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Tabel cu informatii ale asociatiilor</h3>
+                </div>
+
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Denumire</th>
+                                <th>Cod fiscal</th>
+                                <th>Nr Reg Com</th>
+                                <th>Data infintare</th>
+                                <th>IBAN</th>
+                                <th>Localitate</th>
+                                <th>Judet</th>
+                                <th>Adresa</th>
+                                <th>Functii</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Denumire)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CodFiscal)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NrRegCom)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DataInfintare)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Iban)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Localitate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Judet)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Adresa)</td>
+                                <td><a href="Asociatie/Update/@item.Id">Update</a> | <a href="" onclick="Delete('@item.Id')">Delete</a></td>
+                            </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Denumire</th>
+                                <th>Cod fiscal</th>
+                                <th>Nr Reg Com</th>
+                                <th>Data infintare</th>
+                                <th>IBAN</th>
+                                <th>Localitate</th>
+                                <th>Judet</th>
+                                <th>Adresa</th>
+                                <th>Functii</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>                
+            </div>            
+        </div>        
+    </div>    
+</section>
+
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+
+    $(function () {
+        $('#example1').DataTable();
+    });
+    function Delete(id){
+        var txt;
+        var r = confirm("Sigur vrei sa stergi?");
+        if (r == true) {
+
+            $.ajax(
+            {
+                type: "POST",
+                url: '@Url.Action("Delete", "Asociatie")',
+                data: {
+                    id: id
+                },
+                error: function (result) {
+                    alert("error");
+                },
+                success: function (result) {
+                    if (result == true) {
+                        var baseUrl = "/Asociatie";
+                        window.location.reload(true);
+                    }
+                    else {
+                        alert("Exista o problema!");
+                    }
+                }
+            });
+        }
+    }
+</script>

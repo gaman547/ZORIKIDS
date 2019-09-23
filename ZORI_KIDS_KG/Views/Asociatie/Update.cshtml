@@ -1,0 +1,142 @@
+﻿@model ZORI_KIDS_KG.Models.Asociatie
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<link rel="stylesheet" href="~/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+
+<section class="content-header">
+    <h1>
+        Editare informatii
+    </h1>
+</section>
+<section class="content container-fluid">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Update informatii asociatie</h3>
+        </div>
+        <form class="form-horizontal" method="post" asp-action="UpdateAsociatie">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="box-body">
+
+                <div class="form-group">
+                    <label asp-for="Denumire" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-commenting-o"></i></span>
+                        <input asp-for="Denumire" type="text" class="form-control" value="@Model.Denumire">
+                        <span asp-validation-for="Denumire" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CodFiscal" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-info"></i></span>
+                        <input asp-for="CodFiscal" type="text" class="form-control" value="@Model.CodFiscal">
+                        <span asp-validation-for="CodFiscal" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NrRegCom" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-hashtag"></i></span>
+                        <input asp-for="NrRegCom" type="text" class="form-control" value="@Model.NrRegCom">
+                        <span asp-validation-for="NrRegCom" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DataInfintare" class="col-sm-3 control-label"></label>
+                    <div class="input-group date col-xs-6">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" asp-for="DataInfintare" class="form-control pull-right" value="@Model.DataInfintare" id="datepicker">
+                        <span asp-validation-for="DataInfintare" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Iban" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                        <input asp-for="Iban" type="text" class="form-control" value="@Model.Iban">
+                        <span asp-validation-for="Iban" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Localitate" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                        <input asp-for="Localitate" type="text" class="form-control" value="@Model.Localitate">
+                        <span asp-validation-for="Localitate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Judet" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-map-o"></i></span>
+                        <input asp-for="Judet" type="text" class="form-control" value="@Model.Judet">
+                        <span asp-validation-for="Judet" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Adresa" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                        <input asp-for="Adresa" type="text" class="form-control" value="@Model.Adresa">
+                        <span asp-validation-for="Adresa" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ParinteId" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        @Html.DropDownList("ParinteId", null, htmlAttributes: new { @class = "form-control" })
+                        <span asp-validation-for="ParinteId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CopilId" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                        @Html.DropDownList("CopilId", null, htmlAttributes: new { @class = "form-control" })
+                        <span asp-validation-for="CopilId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+            </div>
+            <div class="box-footer">
+                <button type="button" onclick="Redirect();" class="btn-lg btn-default">Renunta</button>
+                <button type="submit" class="btn-lg btn-info pull-right">Salveaza</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
+        function Redirect() {
+            window.location = "/Asociatie/Index";
+        }
+
+    </script>
+    }

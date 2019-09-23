@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="~/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="~/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" href="~/assets/css/argon.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <header class="header-global">
+        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent headroom">
+            <div class="container">
+                <a class="navbar-brand mr-lg-5" asp-controller="Home" asp-action="Index">
+                    <img src="~/assets/img/theme/zori_color.jpg" style="height:66px" alt="brand">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="navbar_global">
+                    <div class="navbar-collapse-header">
+                        <div class="row">
+                            <div class="col-6 collapse-brand">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <img src="~/assets/img/theme/zori.jpg" style="height:66px" alt="brand">
+                                </a>
+                            </div>
+                            <div class="col-6 collapse-close">
+                                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Privacy" class="nav-link" data-toggle="tooltip" role="button">
+                                <i class="ni ni-ui-04 d-lg-none"></i>
+                                <span class="nav-link-inner--text">GDPR</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" data-toggle="dropdown" role="button">
+                                <i class="ni ni-ui-04 d-lg-none"></i>
+                                <span class="nav-link-inner--text">Informatii</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-xl">
+                                <div class="dropdown-menu-inner">
+                                    <a asp-controller="MailSender" asp-action="Contact" class="media d-flex align-items-center">
+                                        <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                                            <i class="fa fa-commenting"></i>
+                                        </div>
+                                        <div class="media-body ml-3">
+                                            <h6 class="heading text-primary mb-md-1">Contact</h6>
+                                            <p class="description d-none d-md-inline-block mb-0">Trimite-ne un mesaj ...</p>
+                                        </div>
+                                    </a>
+                                    <a asp-controller="Home" asp-action="Maps" class="media d-flex align-items-center">
+                                        <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                                            <i class="fa fa-map"></i>
+                                        </div>
+                                        <div class="media-body ml-3">
+                                            <h6 class="heading text-primary mb-md-1">Locatie</h6>
+                                            <p class="description d-none d-md-inline-block mb-0">Harta cu locatia exacta unde ne poti gasii cu usurinta.</p>
+                                        </div>
+                                    </a>
+                                    <a asp-controller="Home" asp-action="Despre" class="media d-flex align-items-center">
+                                        <div class="icon icon-shape bg-gradient-danger rounded-circle text-white">
+                                            <i class="fa fa-heartbeat"></i>
+                                        </div>
+                                        <div class="media-body ml-3">
+                                            <h6 class="heading text-primary mb-md-1">Despre ZORI Kids</h6>
+                                            <p class="description d-none d-md-inline-block mb-0">Afla cum a luat nastere proiectul ZORI si DE CE?</p>
+                                        </div>
+                                    </a>
+                                    <a asp-controller="Home" asp-action="AboutME" class="media d-flex align-items-center">
+                                        <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                                            <i class="fa fa-code"></i>
+                                        </div>
+                                        <div class="media-body ml-3">
+                                            <h5 class="heading text-warning mb-md-1">Despre dezvoltator</h5>
+                                            <p class="description d-none d-md-inline-block mb-0">Creierul din umbra care a dezvoltat aceasta platforma.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>                 
+                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" data-toggle="dropdown" role="button">
+                                    <i class="ni ni-ui-04 d-lg-none"></i>
+                                    <span class="nav-link-inner--text">Contul meu</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-xl">
+                                    <div class="dropdown-menu-inner">
+                                        <a asp-controller="User" asp-action="Index" class="media d-flex align-items-center">
+                                            <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                                                <i class="fa fa-user-circle"></i>
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="heading text-primary mb-md-1">Profilul meu</h6>
+                                                <p class="description d-none d-md-inline-block mb-0">Vizualizeaza si editeaza informatiile tale personale.</p>
+                                            </div>
+                                        </a>
+                                        <a asp-controller="User" asp-action="Copil" class="media d-flex align-items-center">
+                                            <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                                                <i class="fa fa-info-circle"></i>
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="heading text-primary mb-md-1">Profilul copilului</h6>
+                                                <p class="description d-none d-md-inline-block mb-0">Vezi informatii, sterge si editeaza. Poti accesa aceasta pagina daca ai creat profilul copilului in prealabil</p>
+                                            </div>
+                                        </a>
+                                        <a asp-controller="User" asp-action="AddCopil" class="media d-flex align-items-center">
+                                            <div class="icon icon-shape bg-gradient-danger rounded-circle text-white">
+                                                <i class="fa fa-child"></i>
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="heading text-primary mb-md-1">Adauga copil</h6>
+                                                <p class="description d-none d-md-inline-block mb-0">Aici poti crea profilul copilului tau.</p>
+                                            </div>
+                                        </a>
+                                        <a asp-controller="User" asp-action="Asociatie" class="media d-flex align-items-center">
+                                            <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                                                <i class="fa fa-info-circle"></i>
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="heading text-primary mb-md-1">Profilul asociatiei</h6>
+                                                <p class="description d-none d-md-inline-block mb-0">Vezi informatii, sterge si editeaza. Poti accesa aceasta pagina daca ai creat profilul asociatiei in prealabil</p>
+                                            </div>
+                                        </a>
+                                        <a asp-controller="User" asp-action="AddAsociatie" class="media d-flex align-items-center">
+                                            <div class="icon icon-shape bg-gradient-danger rounded-circle text-white">
+                                                <i class="fa fa-group"></i>
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="heading text-primary mb-md-1">Adauga asociatie</h6>
+                                                <p class="description d-none d-md-inline-block mb-0">Aici poti crea profilul asociatiei tale.</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                     }
+
+                    <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                        <li class="nav-item d-none d-lg-block ml-lg-4">
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Security" asp-action="Login" class="btn btn-outline-success btn-icon">
+                                    <span class="btn-inner--icon">
+                                        <i class="fa fa-sign-in mr-2"></i>
+                                    </span>
+                                    <span class="nav-link-inner--text">Conectare</span>
+                                </a>
+                                <a asp-controller="Security" asp-action="Register" class="btn btn-outline-info btn-icon">
+                                    <span class="btn-inner--icon">
+                                        <i class="fa fa-sign-in mr-2"></i>
+                                    </span>
+                                    <span class="nav-link-inner--text">Inscrie-te</span>
+                                </a>
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (User.IsInRole("Administrator"))
+                                {
+                                    <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-warning btn-icon">
+                                        <span class="btn-inner--icon">
+                                            <i class="fa fa-sign-in mr-2"></i>
+                                        </span>
+                                        <span class="nav-link-inner--text">Administrare</span>
+                                    </a>
+                                }
+                                <a asp-controller="Security" asp-action="Logout" class="btn btn-outline-danger btn-icon">
+                                    <span class="btn-inner--icon">
+                                        <i class="fa fa-sign-out mr-2"></i>
+                                    </span>
+                                    <span class="nav-link-inner--text">Iesire</span>
+                                </a>
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row row-grid align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h3 class="text-primary font-weight-light mb-2">Iti multumim pentru sprijinul acordat!</h3>
+                    <h4 class="mb-0 font-weight-light">Hai sa tinem legatura pe retelele sociale.</h4>
+                </div>
+                <div class="col-lg-6 text-lg-center btn-wrapper">
+                    <a target="_blank" href="https://www.facebook.com/ZORI-Kids-400618704140502/" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Facebook">
+                        <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <a target="_blank" href="#" class="btn btn-neutral btn-icon-only btn-instagram btn-round btn-lg" data-toggle="tooltip" data-original-title="Instagram">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+
+                </div>
+            </div>
+            <hr>
+            <div class="row align-items-center justify-content-md-between">
+                <div class="col-md-6">
+                    <div class="copyright">
+                        <small>&copy; 2019 Dezvoltat de <a asp-action="AboutME">Gabriel Kopacz</a> | Toate drepturile rezervate | Pentru <a asp-action="Despre">ZORI KIDS</a></small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav nav-footer justify-content-end">
+                        <li class="nav-item">
+                            <a asp-controller="MailSender" asp-action="Contact" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Despre" class="nav-link">Despre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="Privacy" class="nav-link">GDPR</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/popper/popper.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="~/assets/vendor/headroom/headroom.min.js"></script>
+    <script src="~/assets/js/argon.js?v=1.1.0"></script>
+    <script src="~/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/bower_components/jquery/dist/jquery.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

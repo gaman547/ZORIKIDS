@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "UploadPicture";
+    Layout = null;
+}
+
+<form method="post" enctype="multipart/form-data" asp-controller="User" asp-action="UploadPicture">
+    <div class="form-group">
+        <div class="col-md-10">
+            <p>Apasa pe primul buton(choose file) pentru a alege un fisier de dimensiuni reduse. Format acceptat : .JPG</p>
+            <input type="file" name="pictures">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Salveaza">
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,138 @@
+﻿@model ZORI_KIDS_KG.Models.Asociatie
+
+@{
+    ViewData["Title"] = "EditAsociatie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" />
+
+
+<section class="section-profile-cover section-shaped my-0">
+    <div class="shape shape-style-1 shape-dark alpha-4">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="card card-profile shadow mt--300">
+            <div class="px-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 order-lg-2">
+                        <div class="card-profile-image">
+                            <a asp-controller="Home" asp-action="Index">
+                                <img src="~/assets/img/theme/zori.jpg" style="max-width:247px" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <form method="post" asp-action="ProfileEditAsociatie">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Denumire" class="control-label"></label>
+                                <input asp-for="Denumire" type="text" class="form-control" value="@Model.Denumire">
+                                <span asp-validation-for="Denumire" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="CodFiscal" class="control-label"></label>
+                                <input asp-for="CodFiscal" type="text" class="form-control" value="@Model.CodFiscal">
+                                <span asp-validation-for="CodFiscal" class="text-danger"></span>
+                            </div>
+
+                            <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+                            <div class="form-group ">
+                                <label asp-for="NrRegCom" class="control-label"></label>
+                                <input type="text" asp-for="NrRegCom" class="form-control" value="@Model.NrRegCom">
+                                <span asp-validation-for="NrRegCom" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="DataInfintare" class="control-label"></label>
+                                <input type="text" asp-for="DataInfintare" class="form-control" id="datepicker" value="@Model.DataInfintare.ToShortDateString()">
+                                <span asp-validation-for="DataInfintare" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group ">
+                                <label asp-for="Iban" class="control-label"></label>
+                                <input type="text" asp-for="Iban" class="form-control" value="@Model.Iban">
+                                <span asp-validation-for="Iban" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group ">
+                                <label asp-for="Localitate" class="control-label"></label>
+                                <input type="text" asp-for="Localitate" class="form-control" value="@Model.Localitate">
+                                <span asp-validation-for="Localitate" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group ">
+                                <label asp-for="Judet" class="control-label"></label>
+                                <input type="text" asp-for="Judet" class="form-control" value="@Model.Judet">
+                                <span asp-validation-for="Judet" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group ">
+                                <label asp-for="Adresa" class="control-label"></label>
+                                <input type="text" asp-for="Adresa" class="form-control" value="@Model.Adresa">
+                                <span asp-validation-for="Adresa" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 py-5 border-top text-center">
+                        <div class="col-md-12">
+                            <div class="col justify-content-center">
+                                <button type="button" onclick="Redirect();" class="btn btn-warning mb-3 mb-sm-0">Renunta</button>
+                                <button type="submit" class="btn btn-info">Continua</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <script>
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
+        function Redirect() {
+            window.location = "/User/Asociatie";
+        }
+
+    </script>
+}

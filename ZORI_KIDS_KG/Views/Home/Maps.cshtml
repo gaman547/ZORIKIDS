@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Maps";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>       
+        #map {
+            height: 400px; 
+            width: 100%; 
+        }
+    </style>
+</head>
+
+<section class="section section-lg section-shaped pb-250">
+    <div class="shape shape-style-1 shape-dark">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <section class="content container-fluid">
+        <div class="container">
+            <div class="row row-grid justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-3"><span class="text-success">Doresti sa ne faci o vizita?</span></h2>
+                    <h6 class="text-white">Daca raspunsul este DA, ne poti gasii in Targu Mures, strada Ramurele nr 31 scara A Apartamentul 1</h6>     
+                    <h6 class="text-white">Verifica harta interactiva pentru indicatii.</h6>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div id="map"></div>
+        </div>
+    </section>
+    <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</section>
+    <script>        
+        function initMap() {            
+            var zori = { lat: 46.5377282, lng: 24.5904949 };
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 15, center: zori });
+            var marker = new google.maps.Marker({ position: zori, map: map });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXO3b4LGRAbBIHcObzr4UJF6rBalS7iTk&callback=initMap">
+    </script>
+
+
+

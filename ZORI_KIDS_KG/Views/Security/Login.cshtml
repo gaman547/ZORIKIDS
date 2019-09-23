@@ -1,0 +1,92 @@
+﻿@model ZORI_KIDS_KG.Models.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section-profile-cover section-shaped my-0">    
+    <div class="shape shape-style-1 shape-dark alpha-4">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>    
+    <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="card card-profile shadow mt--300">
+            <div class="px-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 order-lg-2">
+                        <div class="card-profile-image">
+                            <a asp-controller="Home" asp-action="Index">
+                                <img src="~/assets/img/theme/zori.jpg" style="max-width:247px" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+
+                    <form method="post" asp-action="Login">
+
+                        <div class="row col-12 align-items-center">
+
+                            <div class="col-md-2">
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label asp-for="User" class="control-label"></label>
+                                    <input type="text" asp-for="User" class="form-control" placeholder="Adresa dvs. de email">
+                                    <span asp-validation-for="User" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" type="password" class="form-control" placeholder="Parola dvs.">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="mt-5 py-5 border-top text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-9">
+                                    <div class="row justify-content-center">
+                                        <button type="button" onclick="Redirect();" class="btn btn-warning mb-3 mb-sm-0">Renunta</button>
+                                        <input type="submit" value="login" class="btn btn-info">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }    

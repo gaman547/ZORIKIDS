@@ -1,0 +1,123 @@
+﻿@model ZORI_KIDS_KG.Models.Copil
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<link rel="stylesheet" href="~/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+
+<section class="content-header">
+    <h1>
+        Editare informatii
+    </h1>
+</section>
+<section class="content container-fluid">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Update date personale copil</h3>
+        </div>
+        <form class="form-horizontal" method="post" asp-action="UpdateCopil">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label asp-for="Cnp" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-drivers-license-o"></i></span>
+                        <input asp-for="Cnp" type="text" class="form-control" value="@Model.Cnp">
+                        <span asp-validation-for="Cnp" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Nume" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                        <input asp-for="Nume" type="text" class="form-control" value="@Model.Nume">
+                        <span asp-validation-for="Nume" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Prenume" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-user-plus"></i></span>
+                        <input asp-for="Prenume" type="text" class="form-control" value="@Model.Prenume">
+                        <span asp-validation-for="Prenume" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Varsta" class="col-sm-3 control-label"></label>
+                    <div class="input-group date col-xs-6">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" asp-for="Varsta" class="form-control pull-right" value="@Model.Varsta" id="datepicker">
+                        <span asp-validation-for="Varsta" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Sex" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-venus-mars"></i></span>
+                        <select class="form-control" asp-for="Sex">
+                            <option value="">Alege raspuns</option>
+                            <option value="Masculin">Masculin</option>
+                            <option value="Feminin">Feminin</option>
+                        </select>
+                        <span asp-validation-for="Sex" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Vorbeste" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-commenting-o"></i></span>
+                        <select class="form-control" asp-for="Vorbeste">
+                            <option value="">Alege raspuns</option>
+                            <option value="Da">Da</option>
+                            <option value="Nu">Nu</option>
+                        </select>
+                        <span asp-validation-for="Vorbeste" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ParinteId" class="col-sm-3 control-label"></label>
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        @Html.DropDownList("ParinteId", null, htmlAttributes: new { @class = "form-control" })
+                        <span asp-validation-for="ParinteId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+            </div>
+            <div class="box-footer">
+                <button type="button" onclick="Redirect();" class="btn-lg btn-default">Renunta</button>
+                <button type="submit" class="btn-lg btn-info pull-right">Salveaza</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/dist/jquery.mask.min.js"></script>
+
+    <script>
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
+        function Redirect() {
+            window.location = "/Copil/Index";
+        }
+
+    </script>
+}

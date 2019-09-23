@@ -1,0 +1,165 @@
+﻿@model ZORI_KIDS_KG.Models.Parinte
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" />
+
+
+<section class="section-profile-cover section-shaped my-0">    
+    <div class="shape shape-style-1 shape-dark alpha-4">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>    
+    <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="card card-profile shadow mt--300">
+            <div class="px-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 order-lg-2">
+                        <div class="card-profile-image">
+                            <a asp-controller="Home" asp-action="Index">
+                                <img src="~/assets/img/theme/zori.jpg" style="max-width:247px" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                    </div>
+                </div>                
+
+                    <form asp-action="Register">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" type="text" class="form-control" placeholder="Adresa dvs. de email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" type="password" class="form-control" placeholder="Creati o parola puternica.">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label asp-for="Cnp" class="control-label"></label>
+                                    <input asp-for="Cnp" type="text" class="form-control" placeholder="Cod Numeric Personal">
+                                    <span asp-validation-for="Cnp" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label asp-for="Nume" class="control-label"></label>
+                                    <input type="text" asp-for="Nume" class="form-control" placeholder="Numele dvs.">
+                                    <span asp-validation-for="Nume" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label asp-for="Prenume" class="control-label"></label>
+                                    <input type="text" asp-for="Prenume" class="form-control" placeholder="Prenumele dvs.">
+                                    <span asp-validation-for="Prenume" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label asp-for="Sex" class="control-label"></label>
+                                    <select asp-for="Sex" class="form-control">
+                                        <option value="">Alege sex</option>
+                                        <option value="Masculin">Masculin</option>
+                                        <option value="Feminin">Feminin</option>
+                                    </select>
+                                    <span asp-validation-for="Sex" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label asp-for="Telefon" class="control-label"></label>
+                                    <input type="text" asp-for="Telefon" class="form-control" placeholder="Telefonul dvs. in formatul 07XXXXXXXX">
+                                    <span asp-validation-for="Telefon" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Varsta" class="control-label"></label>
+                                    <input type="text" asp-for="Varsta" class="form-control" id="datepicker" placeholder="Alegeti data nasterii">
+                                    <span asp-validation-for="Varsta" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label asp-for="Localitate" class="control-label"></label>
+                                    <input type="text" asp-for="Localitate" class="form-control" placeholder="Localitatea dvs. de resedinta">
+                                    <span asp-validation-for="Localitate" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label asp-for="Judet" class="control-label"></label>
+                                    <input type="text" asp-for="Judet" class="form-control" placeholder="Judetul dvs. de resedinta">
+                                    <span asp-validation-for="Judet" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-md-7">
+                                <div class="form-group ">
+                                    <label asp-for="Adresa" class="control-label"></label>
+                                    <input type="text" asp-for="Adresa" class="form-control" placeholder="Adresa dvs. de resedinta">
+                                    <span asp-validation-for="Adresa" class="text-danger"></span>
+                                </div>                               
+
+                                <div class="mt-5 py-5 border-top text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-9">
+                                            <div class="row justify-content-center">
+                                                <button type="button" onclick="Redirect();" class="btn btn-warning mb-3 mb-sm-0">Renunta</button>
+                                                <button type="submit" class="btn btn-info">Continua</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                                                
+                            </div>
+                        </div>
+                    </form>                
+                                         
+                    
+                </div>
+
+            </div>
+        </div>
+    
+
+    <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <script>
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
+        function Redirect() {
+            window.location = "/Home/Index";
+        }
+
+    </script>
+}

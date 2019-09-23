@@ -1,0 +1,115 @@
+﻿@model IEnumerable<ZORI_KIDS_KG.Models.Copil>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Copii
+        <small>Date personale</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Dashboard" asp-action="Index"><i class="fa fa-dashboard"></i> Home</a></li>        
+        <li class="active">Copii</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Tabel cu informatii personale ale copiilor</h3>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>CNP</th>
+                                <th>Nume</th>
+                                <th>Prenume</th>
+                                <th>Varsta</th>
+                                <th>Sex</th>                                
+                                <th>Vorbeste?</th>
+                                <th>Functii</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Cnp)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Nume)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Prenume)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Varsta)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Sex)</td>                                    
+                                    <td>@Html.DisplayFor(modelItem => item.Vorbeste)</td>
+                                    <td><a href="Copil/Update/@item.Id">Update</a> | <a href="" onclick="Delete('@item.Id')">Delete</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>CNP</th>
+                                <th>Nume</th>
+                                <th>Prenume</th>
+                                <th>Varsta</th>
+                                <th>Sex</th>                                
+                                <th>Vorbeste?</th>
+                                <th>Functii</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>                
+            </div>           
+        </div>        
+    </div>    
+</section>
+
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+
+    $(function () {
+        $('#example1').DataTable();
+    });
+    function Delete(id){
+        var txt;
+        var r = confirm("Esti sigur ca vrei sa stergi?");
+        if (r == true) {
+
+            $.ajax(
+            {
+                type: "POST",
+                url: '@Url.Action("Delete", "Copil")',
+                data: {
+                    id: id
+                },
+                error: function (result) {
+                    alert("error");
+                },
+                success: function (result) {
+                    if (result == true) {
+                        var baseUrl = "/Copil";
+                        window.location.reload(true);
+                    }
+                    else {
+                        alert("Exista o problema!");
+                    }
+                }
+            });
+        }
+    }
+</script>
+
